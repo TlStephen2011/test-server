@@ -39,7 +39,7 @@ jobs:
 
       - name: Update Kubernetes Manifest
         run: |
-          sed -i "s|registry.hextech.online/k8s/test-api:latest|registry.hextech.online/k8s/test-api:${{ github.ref_name }}|g" test-api-infrastructure/test-api/deployment.yaml
+          sed -i "s|registry.hextech.online/k8s/test-api:.*|registry.hextech.online/k8s/test-api:${{ github.ref_name }}|g" test-api-infrastructure/test-api/deployment.yaml
 
       - name: Commit and Push Changes
         run: |
