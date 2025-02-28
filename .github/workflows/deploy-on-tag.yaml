@@ -35,15 +35,15 @@ jobs:
         with:
           repository: TlStephen2011/test-api-infrastructure
           token: ${{ secrets.TEST_INFRASTRUCTURE_CONFIG_TOKEN }}
-          path: test-api-infrastructure
+          path: test-api
 
       - name: Update Kubernetes Manifest
         run: |
-          sed -i "s|registry.hextech.online/k8s/test-api:latest|registry.hextech.online/k8s/test-api:${{ github.ref_name }}|g" test-api-infrastructure/deployment.yaml
+          sed -i "s|registry.hextech.online/k8s/test-api:latest|registry.hextech.online/k8s/test-api:${{ github.ref_name }}|g" test-api/deployment.yaml
 
       - name: Commit and Push Changes
         run: |
-          cd test-api-infrastructure
+          cd test-api
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
           git add deployment.yaml
